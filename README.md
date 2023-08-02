@@ -9,10 +9,10 @@
 
 ## 运行说明
 > 说明如何运行和使用你的项目，建议给出具体的步骤说明
-* 项目克隆到本地
-    ```git clone git@codeup.aliyun.com:yiliang/algorithm/realtime_question_match.git```
+* 项目克隆到本地```git clone git@codeup.aliyun.com:yiliang/algorithm/realtime_question_match.git```
+* 进入项目文件夹
 * 安装依赖 ```pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple```
-* 使用model文件夹中的model.py创建一个本地embedding模型，默认名为embedding_model
+* 使用model文件夹中的model.py创建一个本地embedding模型，默认模型为moka的m3e，文件名为embedding_model
 * websocket_server 中设置如下参数，火山引擎语音技术应用管理可查
 
 appid = "xxx"    # 项目的 appid
@@ -25,7 +25,6 @@ cluster = "xxx"  # 请求的集群
 * 分别在两个终端先运行websocket_server 再运行websocket_client
 
 
-
 ## 文档说明
 * qa_db 是一个问答数据加载类，存储问答数据以及问题的embedding。可以添加、显示问答数据
 * questio_match 接受一个qa_db对象，query方法接收一个问题并匹配最大相似度且大于0.81的问答对
@@ -33,4 +32,5 @@ cluster = "xxx"  # 请求的集群
 
 ## 测试说明
 * test文件夹里的test_server和test_client用于批量测试。
-* 操作方法与前面相同
+* 将文件放入主目录，需要调用qa_db,question_match,qa_test
+* 其他操作同上
