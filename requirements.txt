@@ -1,0 +1,7 @@
+openai
+sentence_transformers
+asyncio
+websockets
+wave
+urllib3
+enum34
