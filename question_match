@@ -1,0 +1,45 @@
+from qa_db import qa_data
+from question_match import match
+import openai
+
+## 注释调了调用gpt的步骤，如果开通的有openai的api服务可以设置key然后取消注释
+# openai.api_key=""
+# openai.api_base=""
+
+# def get_completion(prompt, model="gpt-3.5-turbo"):
+#     '''
+#     prompt: 对应的提示
+#     model: 调用的模型，默认为 gpt-3.5-turbo(ChatGPT)
+#     '''
+#     messages = [
+#         {'role':'system', 'content':'你的角色是一个资深销售'},
+#         {"role": "user", "content": prompt}
+#         ]
+#     response =openai.ChatCompletion.create(
+#         model=model,
+#         messages=messages,
+#         temperature=0, # 模型输出的温度系数，控制输出的随机程度
+#     )
+#     # 调用 OpenAI 的 ChatCompletion 接口
+#     return response.choices[0].message["content"]
+
+db = qa_data()
+
+# 添加自己的问答对
+db.add(['是做什么的？','这是一个可以实时匹配对话问题的项目'])
+
+app = match(db)
+
+def test(question):
+    qa_text = app.query(question)
+    return qa_text
+    # if qa_text != 0:
+    #     print(qa_text)
+    #     prompt = f"""
+    #     你的任务是根据所给问答信息‘{qa_text}’，给出具体问题‘{question}’的答案。
+    #     """
+      
+    #     response =get_completion(prompt)
+    #     return response
+    # else:
+    #     return 0
